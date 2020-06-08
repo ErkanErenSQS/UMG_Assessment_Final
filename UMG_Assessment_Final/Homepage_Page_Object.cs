@@ -12,7 +12,7 @@ namespace HomePage_Page_Object
         By Username = By.CssSelector("input[placeholder='Username']");
         By Password = By.CssSelector("input[placeholder='Password']");
         By SignUpClick = By.CssSelector("button[type='submit']");
-        By CheckUserPostLogin = By.CssSelector("[ui-sref='app.profile.main({ username: $ctrl.currentUser.username })']");
+        By CheckUserName = By.CssSelector("[ui-sref='app.profile.main({ username: $ctrl.currentUser.username })']");
 
         public Homepage_Page_Object()
         {
@@ -60,16 +60,13 @@ namespace HomePage_Page_Object
 
         public void ClickSubmit()
         {
-            IWebElement Finalise = driver.FindElement(SignUpClick);
-            Finalise.Click();
+            driver.FindElement(SignUpClick).Click();
         }
 
         public void CheckUser()
         {
-            IWebElement user = driver.FindElement(CheckUserPostLogin);
-            bool isElementDisplayed = user.Displayed;
-            Assert.True(isElementDisplayed);
-            user.Click();
+            bool Username_Exists = driver.FindElement(CheckUserName).Displayed;
+            Assert.True(Username_Exists);
         }
     
     }   
