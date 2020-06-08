@@ -1,6 +1,6 @@
 ﻿using System;
 using TechTalk.SpecFlow;
-using HomePage_Page;
+using HomePage_Page_Object;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -11,22 +11,20 @@ namespace StepBindings
     [Binding]
     public class SignUpTest {
 
-        private IWebDriver driver;
-        //Homepage_Page_Object step = new Homepage_Page_Object(driver);
+        Homepage_Page_Object step = new Homepage_Page_Object();
 
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+            step.driver.Manage().Window.Maximize();
         }
 
         [Test]
         [Given(@"I am not logged in")]
         public void GivenIAmNotLoggedIn()
         {
-            Homepage_Page_Object step = new Homepage_Page_Object(driver);
-            driver.Navigate().GoToUrl("https://angularjs.realworld.io/");
+       
+            step.driver.Navigate().GoToUrl("https://angularjs.realworld.io/");
             step.Click_Signup();
         }
         
@@ -34,7 +32,6 @@ namespace StepBindings
         [When(@"I complete the signup form")]
         public void WhenICompleteTheSignupForm()
         {
-            Homepage_Page_Object step = new Homepage_Page_Object(driver);
             step.InputUsername();
             step.InputEmail();
             step.InputPassword();
@@ -44,7 +41,6 @@ namespace StepBindings
         [Then(@"I am logged in")]
         public void ThenIAmLoggedIn()
         {
-            Homepage_Page_Object step = new Homepage_Page_Object(driver);
             step.ClickSubmit();
             Thread.Sleep(5000);
         }
@@ -53,14 +49,13 @@ namespace StepBindings
         [Then(@"Username is displayed")]
         public void ThenUsernameIsDisplayed()
         {
-            Homepage_Page_Object step = new Homepage_Page_Object(driver);
             step.CheckUser();
         }
 
         [TearDown]
         public void TearDown()
         {
-            driver.Close();
+            step.driver.Close();
         }
     }
 }

@@ -2,11 +2,11 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace HomePage_Page
+namespace HomePage_Page_Object
 {
     class Homepage_Page_Object
     {
-        IWebDriver driver = new ChromeDriver();
+        public IWebDriver driver;
         By Email = By.CssSelector("input[placeholder='Email']");
         By InitialSignUp = By.XPath("//a[@href='#/register']");
         By Username = By.CssSelector("input[placeholder='Username']");
@@ -14,9 +14,22 @@ namespace HomePage_Page
         By SignUpClick = By.CssSelector("button[type='submit']");
         By CheckUserPostLogin = By.CssSelector("[ui-sref='app.profile.main({ username: $ctrl.currentUser.username })']");
 
-        public Homepage_Page_Object(IWebDriver driver)
+        public Homepage_Page_Object()
         {
-            this.driver = driver;
+            driver = new ChromeDriver();
+        }
+
+        public IWebDriver Getdriver()
+        {
+            if (driver == null)
+            {
+                driver = new ChromeDriver();
+                return driver;
+            }
+            else
+            {
+                return driver;
+            }
         }
 
         public void Click_Signup()
