@@ -39,22 +39,20 @@ namespace StepBindings
         }
         
         [Test]
-        [Then(@"i am logged in")]
+        [Then(@"I am logged in")]
         public void ThenIAmLoggedIn()
         {
             Homepage_Page_Object step = new Homepage_Page_Object(driver);
             step.ClickSubmit();
             Thread.Sleep(5000);
-            step.CheckUser();
-            driver.Quit();
         }
 
         [Test]
-        [Then(@"username is displayed")]
+        [Then(@"Username is displayed")]
         public void ThenUsernameIsDisplayed()
         {
-            Ass
-
+            Homepage_Page_Object step = new Homepage_Page_Object(driver);
+            step.CheckUser();
         }
 
         [TearDown]
