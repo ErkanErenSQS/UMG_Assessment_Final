@@ -32,6 +32,11 @@ namespace HomePage_Page_Object
             }
         }
 
+        public void Open_Homepage()
+        {
+            driver.Navigate().GoToUrl("https://angularjs.realworld.io/");
+        }
+
         public void Click_Signup()
         {
             IWebElement Initialise = driver.FindElement(InitialSignUp);

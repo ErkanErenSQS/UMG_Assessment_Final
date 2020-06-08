@@ -23,8 +23,7 @@ namespace StepBindings
         [Given(@"I am not logged in")]
         public void GivenIAmNotLoggedIn()
         {
-       
-            step.driver.Navigate().GoToUrl("https://angularjs.realworld.io/");
+            step.Open_Homepage();
             step.Click_Signup();
         }
         
@@ -42,7 +41,6 @@ namespace StepBindings
         public void ThenIAmLoggedIn()
         {
             step.ClickSubmit();
-            Thread.Sleep(5000);
         }
 
         [Test]
