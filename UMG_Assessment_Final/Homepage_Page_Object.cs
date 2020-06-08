@@ -39,8 +39,7 @@ namespace HomePage_Page_Object
 
         public void Click_Signup()
         {
-            IWebElement Initialise = driver.FindElement(InitialSignUp);
-            Initialise.Click();
+            driver.FindElement(InitialSignUp).Click();
         }
 
         public void InputUsername()
