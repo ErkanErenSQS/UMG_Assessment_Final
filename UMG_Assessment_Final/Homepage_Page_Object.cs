@@ -6,7 +6,7 @@ namespace HomePage_Page
 {
     class Homepage_Page_Object
     {
-        private IWebDriver driver = new ChromeDriver();
+        IWebDriver driver = new ChromeDriver();
         By Email = By.CssSelector("input[placeholder='Email']");
         By InitialSignUp = By.XPath("//a[@href='#/register']");
         By Username = By.CssSelector("input[placeholder='Username']");

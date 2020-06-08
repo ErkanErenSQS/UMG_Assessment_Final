@@ -12,6 +12,7 @@ namespace StepBindings
     public class SignUpTest {
 
         private IWebDriver driver;
+        //Homepage_Page_Object step = new Homepage_Page_Object(driver);
 
         [SetUp]
         public void SetUp()
@@ -24,7 +25,9 @@ namespace StepBindings
         [Given(@"I am not logged in")]
         public void GivenIAmNotLoggedIn()
         {
+            Homepage_Page_Object step = new Homepage_Page_Object(driver);
             driver.Navigate().GoToUrl("https://angularjs.realworld.io/");
+            step.Click_Signup();
         }
         
         [Test]
@@ -32,7 +35,6 @@ namespace StepBindings
         public void WhenICompleteTheSignupForm()
         {
             Homepage_Page_Object step = new Homepage_Page_Object(driver);
-            step.Click_Signup();
             step.InputUsername();
             step.InputEmail();
             step.InputPassword();
